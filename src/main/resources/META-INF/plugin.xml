@@ -1,19 +1,14 @@
 <idea-plugin>
     <id>com.github.wulkanat.ctypes</id>
-    <name>ctypes</name>
+    <name>C Types</name>
     <vendor>wulkanat</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
-    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.cidr.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.wulkanat.ctypes.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.wulkanat.ctypes.services.MyProjectService"/>
+        <inspectionToolProvider implementation="com.github.wulkanat.ctypes.CTypesInspectionProvider"/>
+        <annotator implementationClass="com.github.wulkanat.ctypes.annotations.TypeAnnotator"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.wulkanat.ctypes.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
